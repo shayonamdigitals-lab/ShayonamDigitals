@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageSquare, ArrowRight } from 'lucide-react';
 
 interface NavLink {
@@ -97,7 +97,7 @@ export default function MobileMenu({
               </a>
             </div>
             <p className="text-xs text-[var(--ink-subtle)] text-center">
-              Office: Bhavnagar, Gujarat, India
+              Office: Bhavnagar, Gujarat • {phoneDisplay}
             </p>
           </div>
         </div>

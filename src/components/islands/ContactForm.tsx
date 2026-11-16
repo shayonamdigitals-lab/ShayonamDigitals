@@ -84,7 +84,7 @@ export default function ContactForm({
         body: JSON.stringify(validation.data),
       });
 
-      const result = await res.json();
+      const result = (await res.json()) as { error?: string; success?: boolean };
 
       if (!res.ok) {
         throw new Error(result.error || 'Failed to submit form. Please reach out via WhatsApp.');

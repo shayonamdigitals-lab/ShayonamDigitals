@@ -31,8 +31,8 @@ export const contactFormSchema = z.object({
     .string()
     .trim()
     .toLowerCase()
-    .email('Please enter a valid email address.')
-    .max(254, 'Email must be 254 characters or fewer.'),
+    .pipe(z.email('Please enter a valid email address.'))
+    .pipe(z.string().max(254, 'Email must be 254 characters or fewer.')),
   phone: z
     .string()
     .trim()
