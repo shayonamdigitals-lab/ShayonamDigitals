@@ -1,0 +1,316 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+import PixelHeroGraphic from '@/components/islands/PixelHeroGraphic';
+import {
+  ArrowRight,
+  MessageSquare,
+  Zap,
+  PhoneCall,
+  Lock,
+  ChevronRight,
+  Clock,
+  Sparkles
+} from 'lucide-react';
+---
+
+<BaseLayout
+  title="Shayonam Digital - Fast, Reliable Websites for Gujarat & India"
+  description="We design and build fast, mobile-first business websites and web applications in Bhavnagar, Gujarat. Direct communication, honest timelines, sub-second speeds."
+>
+  <!-- 1. Hero Section -->
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden border-b border-[var(--border-light)] bg-gradient-to-b from-[var(--paper)] via-[var(--paper)] to-[var(--surface)]/30">
+    <div class="site-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <!-- Left: Copy & Primary CTAs -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Subtle Location Pill -->
+          <div class="inline-flex items-center space-x-2 py-1 px-3 rounded-full bg-[var(--surface)] border border-[var(--border-light)] text-xs font-semibold text-[var(--ink-muted)]">
+            <span class="w-2 h-2 rounded-full bg-[var(--amber)]"></span>
+            <span>Based in Bhavnagar, Gujarat &bull; Serving Pan-India</span>
+          </div>
+
+          <!-- Main Headline (Direction A Softened per Approval) -->
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold font-display tracking-tight text-[var(--ink)] leading-[1.15]">
+            Fast, reliable websites for businesses in Gujarat and across India.
+          </h1>
+
+          <!-- Subhead: Customer-focus & Directness -->
+          <p class="text-base sm:text-lg text-[var(--ink-muted)] max-w-2xl leading-relaxed">
+            We design and build clean, high-performance websites and web applications that turn visitors into paying customers. Direct communication, honest timelines, and zero technical headache.
+          </p>
+
+          <!-- Primary & Secondary CTAs -->
+          <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <a
+              href="/contact"
+              class="btn-tactile inline-flex items-center justify-center space-x-2.5 py-3.5 px-6 rounded-lg bg-[var(--amber)] hover:bg-[var(--amber-hover)] text-[var(--ink)] font-bold text-sm shadow-xs transition-all text-center"
+            >
+              <span>Get a Free Quote</span>
+              <ArrowRight className="w-4 h-4" />
+            </a>
+
+            <a
+              href={siteConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-tactile inline-flex items-center justify-center space-x-2.5 py-3.5 px-6 rounded-lg bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border-light)] text-[var(--ink)] font-semibold text-sm transition-all text-center"
+            >
+              <MessageSquare className="w-4 h-4 text-[#25D366]" />
+              <span>Message on WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Quick Trust Signals -->
+          <div class="pt-4 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-[var(--ink-muted)]">
+            <div class="flex items-center space-x-1.5">
+              <Zap className="w-3.5 h-3.5 text-[var(--amber-text)]" />
+              <span>Sub-second mobile speed</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <PhoneCall className="w-3.5 h-3.5 text-[var(--amber-text)]" />
+              <span>Direct engineer access</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <Lock className="w-3.5 h-3.5 text-[var(--amber-text)]" />
+              <span>Zero recurring lock-in fees</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Memorable Hero Graphic Island (Pixels Becoming Website) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <PixelHeroGraphic client:idle />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. What We Do (Editorial Service List - Banned generic 3-card grid) -->
+  <section class="py-16 md:py-24 border-b border-[var(--border-light)] bg-[var(--paper)]">
+    <div class="site-container">
+      <div class="max-w-2xl mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold font-display text-[var(--ink)]">
+          Services built for real business outcomes.
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
+          Every website we deliver is engineered from scratch for smartphone performance, easy customer contact, and search visibility.
+        </p>
+      </div>
+
+      <!-- Editorial Horizontal List -->
+      <div class="divide-y divide-[var(--border-light)] border-y border-[var(--border-light)]">
+        {siteConfig.services.map((svc, idx) => (
+          <a
+            href={svc.path}
+            class="group py-6 md:py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[var(--surface)]/50 px-3 md:px-4 -mx-3 md:-mx-4 rounded-xl transition-all"
+          >
+            <div class="flex items-start md:items-center space-x-4 md:space-x-8">
+              <span class="font-display font-semibold text-xs md:text-sm text-[var(--amber-text)] tabular-nums mt-1 md:mt-0">
+                {(idx + 1).toString().padStart(2, '0')}
+              </span>
+              <div>
+                <h3 class="text-lg md:text-xl font-bold font-display text-[var(--ink)] group-hover:text-[var(--amber-text)] transition-colors">
+                  {svc.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-[var(--ink-muted)] mt-1 max-w-xl">
+                  {svc.outcome}
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-center space-x-2 text-xs font-semibold text-[var(--ink)] group-hover:text-[var(--amber-text)] pl-12 md:pl-0 transition-colors">
+              <span>Explore service</span>
+              <ChevronRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. How We Work (Sequential Roadmap) -->
+  <section class="py-16 md:py-24 border-b border-[var(--border-light)] bg-[var(--surface)]">
+    <div class="site-container">
+      <div class="max-w-2xl mb-14">
+        <h2 class="text-2xl sm:text-3xl font-bold font-display text-[var(--ink)]">
+          How we take your project from idea to launch.
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-[var(--ink-muted)]">
+          A predictable six-step process with clear milestones, direct communication, and zero surprises.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {siteConfig.processSteps.map((step) => (
+          <div class="p-6 rounded-xl bg-[var(--paper)] border border-[var(--border-light)] space-y-3 relative">
+            <span class="text-xs font-bold font-display text-[var(--amber-text)] uppercase tracking-wider">
+              Step {step.step}
+            </span>
+            <h3 class="text-lg font-bold font-display text-[var(--ink)]">
+              {step.title}
+            </h3>
+            <p class="text-xs sm:text-sm text-[var(--ink-muted)] leading-relaxed">
+              {step.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Why Shayonam (Transparent Proof Grid) -->
+  <section class="py-16 md:py-24 border-b border-[var(--border-light)] bg-[var(--paper)]">
+    <div class="site-container">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-5 space-y-4">
+          <div class="inline-flex items-center space-x-2 py-1 px-3 rounded-full bg-[var(--surface)] text-xs font-semibold text-[var(--ink-muted)]">
+            <span>Honest Differentiators</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold font-display text-[var(--ink)] leading-snug">
+            Why business owners in Gujarat choose Shayonam.
+          </h2>
+          <p class="text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
+            Most agencies sell bloated WordPress themes that take 6 seconds to open on an Android phone. We write clean, modern code engineered for local business realities.
+          </p>
+          <div class="pt-4">
+            <a
+              href="/about"
+              class="text-xs font-bold text-[var(--amber-text)] hover:underline inline-flex items-center space-x-1"
+            >
+              <span>Learn more about our agency approach</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {siteConfig.differentiators.map((diff) => (
+            <div class="p-5 sm:p-6 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] space-y-2.5">
+              <div class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold bg-[var(--surface-alt)] text-[var(--amber-text)]">
+                {diff.badge}
+              </div>
+              <h3 class="text-base font-bold font-display text-[var(--ink)]">
+                {diff.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-[var(--ink-muted)] leading-relaxed">
+                {diff.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Free Website Audit Block (Lead Magnet) -->
+  {siteConfig.features.freeAudit && (
+    <section class="py-14 border-b border-[var(--border-light)] bg-gradient-to-r from-[var(--surface)] via-[var(--surface)] to-[var(--surface-alt)]">
+      <div class="site-container">
+        <div class="p-8 sm:p-10 rounded-2xl bg-[var(--paper)] border border-[var(--border-light)] shadow-xs">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-8 space-y-3">
+              <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[var(--surface)] text-[var(--amber-text)] text-xs font-bold">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Zero Obligation Lead Magnet</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-display text-[var(--ink)]">
+                Wondering why your current site isn't getting customer calls?
+              </h2>
+              <p class="text-sm text-[var(--ink-muted)] max-w-2xl leading-relaxed">
+                Send us your website address. We will manually test your mobile loading speed, smartphone layout, and Google search readiness, and email you a 3-point action plan.
+              </p>
+              <div class="flex items-center space-x-2 text-xs text-[var(--ink-subtle)] pt-1">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Reviewed by a real developer within 2 working days.</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-4 flex justify-start lg:justify-end">
+              <a
+                href="/contact?type=audit"
+                class="btn-tactile w-full sm:w-auto inline-flex items-center justify-center space-x-2 py-3.5 px-6 rounded-lg bg-[var(--ink)] hover:bg-[var(--espresso)] text-[var(--paper)] font-bold text-sm shadow-xs transition-all text-center"
+              >
+                <span>Request Free Audit</span>
+                <ArrowRight className="w-4 h-4 text-[var(--amber)]" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- 6. Frequently Asked Questions -->
+  <section class="py-16 md:py-24 border-b border-[var(--border-light)] bg-[var(--paper)]">
+    <div class="site-container max-w-4xl">
+      <div class="text-center max-w-xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold font-display text-[var(--ink)]">
+          Frequently asked questions.
+        </h2>
+        <p class="mt-3 text-sm text-[var(--ink-muted)]">
+          Clear answers to common questions about timelines, ownership, and pricing.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {siteConfig.faqs.map((faq) => (
+          <details class="group p-5 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] transition-colors open:bg-[var(--paper)] open:border-[var(--amber)]">
+            <summary class="font-display font-semibold text-base sm:text-lg text-[var(--ink)] cursor-pointer list-none flex items-center justify-between select-none">
+              <span>{faq.q}</span>
+              <span class="ml-4 transform group-open:rotate-45 text-[var(--amber-text)] font-bold transition-transform text-xl leading-none">
+                +
+              </span>
+            </summary>
+            <p class="mt-4 text-xs sm:text-sm text-[var(--ink-muted)] leading-relaxed pt-2 border-t border-[var(--border-light)]">
+              {faq.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Final High-Impact CTA Band (Espresso Dark Band) -->
+  <section class="py-20 bg-[var(--espresso)] text-[#EFE8DC] relative overflow-hidden">
+    <div class="site-container text-center max-w-2xl mx-auto space-y-6">
+      <img
+        src="/brand/logo-mark.webp"
+        alt="Shayonam S/D Mark"
+        width="56"
+        height="56"
+        class="h-12 w-auto mx-auto object-contain opacity-90"
+        loading="lazy"
+        decoding="async"
+      />
+
+      <h2 class="text-3xl sm:text-4xl font-bold font-display tracking-tight text-[var(--gold-espresso)]">
+        Ready to build a website that actually brings in business?
+      </h2>
+
+      <p class="text-sm sm:text-base text-[#D9CEBF] leading-relaxed">
+        Let us discuss your project. We provide straightforward advice, honest estimates, and direct developer communication.
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/contact"
+          class="btn-tactile w-full sm:w-auto inline-flex items-center justify-center space-x-2 py-3.5 px-7 rounded-lg bg-[var(--amber)] hover:bg-[var(--amber-hover)] text-[var(--ink)] font-bold text-sm shadow-md transition-all"
+        >
+          <span>Start Your Project</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+
+        <a
+          href={siteConfig.contact.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-tactile w-full sm:w-auto inline-flex items-center justify-center space-x-2 py-3.5 px-6 rounded-lg bg-[var(--espresso-surface)] hover:bg-[var(--espresso-border)] border border-[var(--espresso-border)] text-[#EFE8DC] font-semibold text-sm transition-all"
+        >
+          <MessageSquare className="w-4 h-4 text-[#25D366]" />
+          <span>Chat on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

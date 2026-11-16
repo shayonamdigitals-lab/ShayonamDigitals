@@ -1,0 +1,72 @@
+---
+import { siteConfig } from '@/config/site';
+import MobileMenu from '@/components/islands/MobileMenu';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 w-full bg-[var(--paper)]/95 backdrop-blur-sm border-b border-[var(--border-light)] transition-colors">
+  <div class="site-container flex items-center justify-between h-[72px]">
+    <!-- Brand Logo: Full Lockup on Light Paper -->
+    <a href="/" class="flex items-center space-x-3 group focus-visible:outline-2 focus-visible:outline-[var(--amber)] rounded-md" aria-label="Shayonam Digital - Home">
+      <img
+        src="/brand/logo-lockup.webp"
+        alt="Shayonam Digital"
+        width="220"
+        height="56"
+        class="h-10 w-auto object-contain transition-transform group-hover:scale-[1.01]"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center space-x-8" aria-label="Main Navigation">
+      {siteConfig.navLinks.map((link) => {
+        const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
+        return (
+          <a
+            href={link.href}
+            class={`text-sm font-medium transition-colors ${
+              isActive
+                ? 'text-[var(--amber-text)] font-semibold'
+                : 'text-[var(--ink)] hover:text-[var(--amber-text)]'
+            }`}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Desktop CTA & Contact Info -->
+    <div class="hidden md:flex items-center space-x-4">
+      <a
+        href={siteConfig.contact.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-medium text-[var(--ink-muted)] hover:text-[var(--ink)] flex items-center space-x-1.5 py-2 px-3 rounded-md hover:bg-[var(--surface)] transition-colors"
+        aria-label="Direct WhatsApp Message"
+      >
+        <span class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
+        <span>WhatsApp</span>
+      </a>
+
+      <a
+        href="/contact"
+        class="btn-tactile py-2.5 px-5 rounded-lg bg-[var(--amber)] text-[var(--ink)] font-semibold text-sm hover:bg-[var(--amber-hover)] shadow-xs transition-all"
+      >
+        Get a Free Quote
+      </a>
+    </div>
+
+    <!-- Mobile Navigation Island -->
+    <MobileMenu
+      client:idle
+      navLinks={siteConfig.navLinks}
+      phoneDisplay={siteConfig.contact.phoneDisplay}
+      phoneTel={siteConfig.contact.phoneTel}
+      whatsappUrl={siteConfig.contact.whatsappUrl}
+    />
+  </div>
+</header>

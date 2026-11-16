@@ -1,0 +1,108 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "@fontsource-variable/sora";
+@import "@fontsource-variable/instrument-sans";
+
+@theme {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+  --color-espresso: var(--espresso);
+  --color-espresso-surface: var(--espresso-surface);
+  --color-espresso-border: var(--espresso-border);
+  --color-amber: var(--amber);
+  --color-amber-hover: var(--amber-hover);
+  --color-amber-text: var(--amber-text);
+  --color-coral: var(--coral);
+  --color-coral-hover: var(--coral-hover);
+  --color-gold: var(--gold);
+  --color-gold-espresso: var(--gold-espresso);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+/* Base Styles & Craft Floor */
+html {
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Selection */
+::selection {
+  background-color: #F8DCA4;
+  color: var(--ink);
+}
+
+/* Focus Visible Rings */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* Typography Rules */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Button tactile press feedback (Emil Kowalski rules) */
+.btn-tactile {
+  transition: transform 160ms var(--ease-out), background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.btn-tactile:active {
+  transform: scale(0.97);
+}
+
+/* Container Utility */
+.site-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

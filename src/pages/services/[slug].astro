@@ -1,0 +1,157 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+import { ArrowRight, CheckCircle2, MessageSquare, FileText, Users } from 'lucide-react';
+
+export function getStaticPaths() {
+  return siteConfig.services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+
+// Service JSON-LD Schema
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType: service.title,
+  name: `${service.title} - ${siteConfig.name}`,
+  description: service.outcome,
+  provider: {
+    '@type': 'LocalBusiness',
+    name: siteConfig.name,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Bhavnagar',
+      addressRegion: 'Gujarat',
+      addressCountry: 'IN',
+    },
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Bhavnagar' },
+    { '@type': 'State', name: 'Gujarat' },
+    { '@type': 'Country', name: 'India' },
+  ],
+};
+---
+
+<BaseLayout
+  title={`${service.title} - Shayonam Digital`}
+  description={service.outcome}
+  schema={serviceSchema}
+>
+  <!-- Breadcrumb Header -->
+  <section class="py-12 md:py-16 border-b border-[var(--border-light)] bg-[var(--surface)]">
+    <div class="site-container max-w-4xl space-y-4">
+      <nav class="flex items-center space-x-2 text-xs text-[var(--ink-muted)]" aria-label="Breadcrumb">
+        <a href="/" class="hover:text-[var(--ink)]">Home</a>
+        <span>/</span>
+        <a href="/services" class="hover:text-[var(--ink)]">Services</a>
+        <span>/</span>
+        <span class="text-[var(--ink)] font-semibold">{service.shortTitle}</span>
+      </nav>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[var(--ink)] tracking-tight">
+        {service.title}
+      </h1>
+
+      <p class="text-base sm:text-lg text-[var(--ink-muted)] max-w-2xl leading-relaxed">
+        {service.outcome}
+      </p>
+
+      <div class="pt-4 flex flex-wrap gap-3">
+        <a
+          href={`/contact?service=${service.slug}`}
+          class="btn-tactile inline-flex items-center space-x-2 py-3 px-6 rounded-lg bg-[var(--amber)] hover:bg-[var(--amber-hover)] text-[var(--ink)] font-bold text-sm shadow-xs transition-colors"
+        >
+          <span>Get a Quote for {service.shortTitle}</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+
+        <a
+          href={siteConfig.contact.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-tactile inline-flex items-center space-x-2 py-3 px-5 rounded-lg bg-[var(--paper)] hover:bg-[var(--surface-alt)] border border-[var(--border-light)] text-[var(--ink)] font-semibold text-sm transition-colors"
+        >
+          <MessageSquare className="w-4 h-4 text-[#25D366]" />
+          <span>Discuss on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Details -->
+  <section class="py-16 md:py-24 bg-[var(--paper)]">
+    <div class="site-container max-w-4xl space-y-16">
+      <!-- Who it's for -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border-light)] space-y-3">
+        <div class="flex items-center space-x-2 text-[var(--amber-text)] font-display font-bold text-xs uppercase tracking-wider">
+          <Users className="w-4 h-4" />
+          <span>Target Audience</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold font-display text-[var(--ink)]">
+          Who this service is for
+        </h2>
+        <p class="text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
+          {service.forWhom}
+        </p>
+      </div>
+
+      <!-- What's Included -->
+      <div class="space-y-6">
+        <h2 class="text-2xl font-bold font-display text-[var(--ink)]">
+          What is included in the engagement
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {service.deliverables.map((item) => (
+            <div class="p-5 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] flex items-start space-x-3">
+              <CheckCircle2 className="w-5 h-5 text-[var(--amber-text)] flex-shrink-0 mt-0.5" />
+              <span class="text-xs sm:text-sm text-[var(--ink-muted)] font-medium leading-relaxed">
+                {item}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- What We Need From You -->
+      <div class="p-6 sm:p-8 rounded-2xl bg-[var(--surface)] border border-[var(--border-light)] space-y-4">
+        <div class="flex items-center space-x-2 text-[var(--amber-text)] font-display font-bold text-xs uppercase tracking-wider">
+          <FileText className="w-4 h-4" />
+          <span>Prerequisites</span>
+        </div>
+        <h2 class="text-xl sm:text-2xl font-bold font-display text-[var(--ink)]">
+          What we need from you to get started
+        </h2>
+        <ul class="space-y-2 text-xs sm:text-sm text-[var(--ink-muted)] list-disc pl-5 leading-relaxed">
+          <li>Your official logo files (PNG, SVG, or high-res graphic) and brand colors.</li>
+          <li>A brief breakdown of your core services, products, or company offerings.</li>
+          <li>Phone numbers, email addresses, and Bhavnagar / local physical office address.</li>
+          <li>Any existing domain details if you already own a domain name.</li>
+        </ul>
+      </div>
+
+      <!-- Final Service CTA -->
+      <div class="p-8 rounded-2xl bg-[var(--espresso)] text-[#EFE8DC] text-center space-y-4">
+        <h3 class="text-2xl font-bold font-display text-[var(--gold-espresso)]">
+          Ready to get started with {service.title}?
+        </h3>
+        <p class="text-xs sm:text-sm text-[#D9CEBF] max-w-lg mx-auto">
+          Contact us today. We provide clear deliverables, realistic deadlines, and direct developer communication.
+        </p>
+        <div class="pt-2">
+          <a
+            href={`/contact?service=${service.slug}`}
+            class="btn-tactile inline-flex items-center space-x-2 py-3 px-6 rounded-lg bg-[var(--amber)] hover:bg-[var(--amber-hover)] text-[var(--ink)] font-bold text-sm shadow-sm"
+          >
+            <span>Request a Free Quote</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

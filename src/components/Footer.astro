@@ -1,0 +1,136 @@
+---
+import { siteConfig } from '@/config/site';
+---
+
+<footer class="bg-[var(--espresso)] text-[#EFE8DC] pt-16 pb-28 md:pb-16 border-t border-[var(--espresso-border)]">
+  <div class="site-container">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-[var(--espresso-border)]">
+      <!-- Col 1: Brand & Identity -->
+      <div class="space-y-4 md:col-span-1">
+        <div class="flex items-center space-x-3">
+          <!-- Icon-only mark: Gold/Amber/Coral reads sharply on dark espresso -->
+          <img
+            src="/brand/logo-mark.webp"
+            alt="Shayonam Mark"
+            width="44"
+            height="44"
+            class="h-10 w-auto object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="font-display font-bold text-xl tracking-tight text-[var(--gold-espresso)]">
+            SHAYONAM
+          </span>
+        </div>
+        <p class="text-sm text-[#C4B7AC] leading-relaxed">
+          Boutique digital agency based in Bhavnagar, Gujarat. We build fast, reliable business websites and web applications with direct communication.
+        </p>
+        <div class="pt-2 text-xs text-[#9E8E82]">
+          Bhavnagar, Gujarat 364001, India
+        </div>
+      </div>
+
+      <!-- Col 2: Services -->
+      <div class="space-y-4">
+        <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-[var(--gold-espresso)]">
+          Services
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          {siteConfig.services.map((svc) => (
+            <li>
+              <a href={svc.path} class="text-[#D9CEBF] hover:text-[var(--gold-espresso)] transition-colors">
+                {svc.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Col 3: Company & Information -->
+      <div class="space-y-4">
+        <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-[var(--gold-espresso)]">
+          Agency
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          <li>
+            <a href="/about" class="text-[#D9CEBF] hover:text-[var(--gold-espresso)] transition-colors">
+              About Shayonam
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-[#D9CEBF] hover:text-[var(--gold-espresso)] transition-colors">
+              Start a Project
+            </a>
+          </li>
+          {siteConfig.features.freeAudit && (
+            <li>
+              <a href="/contact?type=audit" class="text-[var(--gold-espresso)] hover:underline flex items-center space-x-1.5 font-medium">
+                <span>Free 2-Day Website Audit</span>
+              </a>
+            </li>
+          )}
+          <li>
+            <a href="/privacy" class="text-[#A8988C] hover:text-[#D9CEBF] transition-colors">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="/terms" class="text-[#A8988C] hover:text-[#D9CEBF] transition-colors">
+              Terms of Service
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact Lines -->
+      <div class="space-y-4">
+        <h3 class="font-display text-sm font-semibold uppercase tracking-wider text-[var(--gold-espresso)]">
+          Direct Inquiries
+        </h3>
+        <div class="space-y-3 text-sm">
+          <div>
+            <div class="text-xs text-[#9E8E82]">WhatsApp (Inquiries)</div>
+            <a
+              href={siteConfig.contact.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[var(--gold-espresso)] hover:underline font-medium text-base"
+            >
+              {siteConfig.contact.whatsappDisplay}
+            </a>
+          </div>
+
+          <div>
+            <div class="text-xs text-[#9E8E82]">Voice Call (Direct)</div>
+            <a
+              href={`tel:${siteConfig.contact.phoneTel}`}
+              class="text-[#D9CEBF] hover:text-[var(--gold-espresso)] transition-colors"
+            >
+              {siteConfig.contact.phoneDisplay}
+            </a>
+          </div>
+
+          <div>
+            <div class="text-xs text-[#9E8E82]">Email</div>
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              class="text-[#D9CEBF] hover:text-[var(--gold-espresso)] transition-colors break-all"
+            >
+              {siteConfig.contact.email}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Legal Notice -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-[#8C7D73] space-y-4 md:space-y-0">
+      <div>
+        &copy; {new Date().getFullYear()} Shayonam Digital. All rights reserved. Built with Astro &amp; Cloudflare.
+      </div>
+      <div class="text-center md:text-right text-[11px] text-[#7A6C62]">
+        Compliant with Indian DPDP Act standards.
+      </div>
+    </div>
+  </div>
+</footer>

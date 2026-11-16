@@ -1,0 +1,6 @@
+Contact: mailto:shayonamdigitals@gmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, gu, hi
+Canonical: https://shayonamdigitals.com/.well-known/security.txt
+Policy: https://shayonamdigitals.com/privacy
+Acknowledgments: https://shayonamdigitals.com/

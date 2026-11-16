@@ -1,12 +1,15 @@
 # Dependencies
 node_modules/
-.pnp
-.pnp.js
+.pnpm-store/
 
 # Production build outputs
 dist/
 dist-ssr/
 build/
+.astro/
+.wrangler/
+.playwright-mcp/
+.reticle/
 
 # Environment files
 .env
@@ -21,7 +24,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
 # OS files
 .DS_Store

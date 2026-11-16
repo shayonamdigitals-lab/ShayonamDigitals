@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { ArrowRight, Home } from 'lucide-react';
+---
+
+<BaseLayout
+  title="Page Not Found - Shayonam Digital"
+  description="The page you are looking for does not exist or has been moved."
+>
+  <section class="py-20 md:py-32 bg-[var(--paper)] text-center">
+    <div class="site-container max-w-xl mx-auto space-y-6">
+      <span class="text-xs font-bold font-display uppercase tracking-widest text-[var(--amber-text)]">
+        Error 404
+      </span>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-[var(--ink)]">
+        Page not found.
+      </h1>
+
+      <p class="text-sm sm:text-base text-[var(--ink-muted)] leading-relaxed">
+        The link you followed may be broken or the page may have been moved. Return to our homepage or get in touch with us directly.
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="btn-tactile inline-flex items-center space-x-2 py-3 px-6 rounded-lg bg-[var(--amber)] hover:bg-[var(--amber-hover)] text-[var(--ink)] font-bold text-sm shadow-xs transition-colors"
+        >
+          <Home className="w-4 h-4" />
+          <span>Return Home</span>
+        </a>
+
+        <a
+          href="/contact"
+          class="btn-tactile inline-flex items-center space-x-2 py-3 px-6 rounded-lg bg-[var(--surface)] hover:bg-[var(--surface-alt)] border border-[var(--border-light)] text-[var(--ink)] font-semibold text-sm transition-colors"
+        >
+          <span>Contact Us</span>
+          <ArrowRight className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

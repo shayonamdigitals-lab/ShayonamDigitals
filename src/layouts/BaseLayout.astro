@@ -1,0 +1,123 @@
+---
+import '@/styles/global.css';
+import { siteConfig } from '@/config/site';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import MobileActionBar from '@/components/MobileActionBar.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title = `${siteConfig.name} - ${siteConfig.tagline}`,
+  description = siteConfig.description,
+  ogImage = '/brand/logo-lockup.png',
+  canonicalUrl = Astro.url.href,
+  schema,
+} = Astro.props;
+
+const siteOrigin = siteConfig.url;
+const fullOgImageUrl = new URL(ogImage, siteOrigin).toString();
+
+// Local Business JSON-LD Schema
+const defaultLocalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${siteOrigin}/#organization`,
+  name: siteConfig.name,
+  url: siteOrigin,
+  logo: `${siteOrigin}/brand/logo-lockup.png`,
+  image: fullOgImageUrl,
+  description: siteConfig.description,
+  email: siteConfig.contact.email,
+  telephone: siteConfig.contact.phoneTel,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bhavnagar',
+    addressRegion: 'Gujarat',
+    addressCountry: 'IN',
+    postalCode: '364001',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Bhavnagar' },
+    { '@type': 'State', name: 'Gujarat' },
+    { '@type': 'Country', name: 'India' },
+  ],
+  priceRange: '₹₹',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '09:30',
+      closes: '19:00',
+    },
+  ],
+};
+
+const pageSchema = schema || defaultLocalBusinessSchema;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullOgImageUrl} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalUrl} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImageUrl} />
+
+    <!-- Favicon Set -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FFFEFC" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+  </head>
+  <body class="bg-[var(--paper)] text-[var(--ink)] antialiased min-h-screen flex flex-col">
+    <!-- Accessible Skip Link -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 py-2.5 px-4 bg-[var(--amber)] text-[var(--ink)] font-bold rounded-md shadow-lg outline-2 outline-[var(--ink)]"
+    >
+      Skip to main content
+    </a>
+
+    <!-- Sticky Header -->
+    <Header />
+
+    <!-- Main Content Slot -->
+    <main id="main-content" class="flex-1 focus:outline-none">
+      <slot />
+    </main>
+
+    <!-- Dark Espresso Band Footer -->
+    <Footer />
+
+    <!-- Mobile Sticky Action Bar -->
+    <MobileActionBar />
+  </body>
+</html>

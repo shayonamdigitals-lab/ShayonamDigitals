@@ -1,0 +1,96 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+import { AlertCircle } from 'lucide-react';
+---
+
+<BaseLayout
+  title="Privacy Policy - Shayonam Digital"
+  description="Privacy Policy for Shayonam Digital. Learn what data we collect, how we protect it, and your rights under the Indian DPDP Act."
+>
+  <section class="py-12 md:py-20 bg-[var(--paper)]">
+    <div class="site-container max-w-3xl space-y-8">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold font-display text-[var(--ink)] tracking-tight">
+          Privacy Policy
+        </h1>
+        <p class="mt-2 text-xs text-[var(--ink-muted)]">
+          Last updated: November 16, 2026 &bull; Compliant with the Digital Personal Data Protection Act (DPDP), 2023.
+        </p>
+      </div>
+
+      <!-- Visible Legal Review Notice -->
+      <div class="p-4 rounded-xl bg-[var(--surface-alt)] border border-[var(--border-light)] flex items-start space-x-3 text-xs text-[var(--ink-muted)]">
+        <AlertCircle className="w-4 h-4 text-[var(--amber-text)] flex-shrink-0 mt-0.5" />
+        <p>
+          <strong class="text-[var(--ink)]">Legal Disclaimer:</strong> This privacy policy is provided as an operational baseline describing our data practices. It should be reviewed and customized by a licensed legal practitioner for specific jurisdiction requirements.
+        </p>
+      </div>
+
+      <div class="space-y-6 text-sm text-[var(--ink)] leading-relaxed">
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">1. Information We Collect</h2>
+          <p class="text-[var(--ink-muted)]">
+            Shayonam Digital operates the website <a href={siteConfig.url} class="text-[var(--amber-text)] underline">{siteConfig.url}</a>. We collect personal information solely when you voluntarily submit it via our contact or website audit forms:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-[var(--ink-muted)]">
+            <li><strong>Identity and Contact Data:</strong> Name, email address, and optional phone/WhatsApp number.</li>
+            <li><strong>Project Information:</strong> Desired service, estimated budget range, website URL (for audits), and your inquiry message.</li>
+            <li><strong>Technical Security Data:</strong> Cryptographically salted and hashed IP representations (we do not store raw IP addresses) and truncated user-agent headers to protect our systems from abusive automated spam.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">2. Purpose of Processing</h2>
+          <p class="text-[var(--ink-muted)]">
+            We use your personal information exclusively for lawful business purposes:
+          </p>
+          <ul class="list-disc pl-5 space-y-1.5 text-[var(--ink-muted)]">
+            <li>To review your website inquiry and provide a tailored quotation or audit report.</li>
+            <li>To communicate with you via email, phone, or WhatsApp regarding your project request.</li>
+            <li>To safeguard our web infrastructure against malicious bots, spam, and denial-of-service attempts.</li>
+          </ul>
+          <p class="text-[var(--ink-muted)] font-medium">
+            We do not sell, rent, monetize, or trade your personal data to any third-party marketing companies.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">3. Data Retention and Deletion</h2>
+          <p class="text-[var(--ink-muted)]">
+            Inquiries and audit records are retained for a period of up to 12 months following our last interaction, after which they are routinely expunged from our secure database unless an active client engagement contract requires continued records.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">4. Your Rights Under the Indian DPDP Act</h2>
+          <p class="text-[var(--ink-muted)]">
+            As a data principal, you have the right to request access to the personal data we hold about you, request corrections to inaccurate records, or demand the complete erasure of your contact details from our databases.
+          </p>
+          <p class="text-[var(--ink-muted)]">
+            To exercise any of these rights, email us at <a href={`mailto:${siteConfig.contact.email}`} class="text-[var(--amber-text)] underline font-medium">{siteConfig.contact.email}</a>. We respond to all verified requests within thirty (30) days.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">5. Cookies and Analytics</h2>
+          <p class="text-[var(--ink-muted)]">
+            Our website is intentionally built to be lightweight and privacy-respecting. We do not use intrusive third-party cross-site tracking cookies. We utilize privacy-friendly, cookieless metrics to measure general page visit volumes without profiling individual users.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">6. Contact Our Data Representative</h2>
+          <p class="text-[var(--ink-muted)]">
+            If you have questions or concerns regarding our privacy practices, please contact:
+          </p>
+          <div class="p-4 rounded-lg bg-[var(--surface)] text-xs text-[var(--ink-muted)] space-y-1 border border-[var(--border-light)]">
+            <div class="font-bold text-[var(--ink)]">Shayonam Digital Data Representative</div>
+            <div>Bhavnagar, Gujarat 364001, India</div>
+            <div>Email: <a href={`mailto:${siteConfig.contact.email}`} class="text-[var(--amber-text)]">{siteConfig.contact.email}</a></div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

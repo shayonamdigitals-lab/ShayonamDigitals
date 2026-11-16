@@ -1,0 +1,44 @@
+---
+import { siteConfig } from '@/config/site';
+import { Phone, MessageSquare, Send } from 'lucide-react';
+---
+
+<!-- Fixed Mobile Action Bar: Thumb-zone reachable on all smartphones -->
+<aside
+  class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--paper)]/95 backdrop-blur-md border-t border-[var(--border-light)] shadow-lg px-4 py-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))]"
+  aria-label="Quick Contact Actions"
+>
+  <div class="grid grid-cols-3 gap-2">
+    <!-- 1. Voice Call -->
+    <a
+      href={`tel:${siteConfig.contact.phoneTel}`}
+      class="btn-tactile flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-[var(--surface)] text-[var(--ink)] hover:bg-[var(--surface-alt)] text-center focus-visible:outline-2 focus-visible:outline-[var(--amber)] min-h-[48px]"
+      aria-label="Call Shayonam Digital directly"
+    >
+      <Phone className="w-4 h-4 text-[var(--ink)] mb-0.5" />
+      <span class="text-[11px] font-medium leading-none">Call</span>
+    </a>
+
+    <!-- 2. WhatsApp -->
+    <a
+      href={siteConfig.contact.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-tactile flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-[#25D366]/15 text-[#128C7E] hover:bg-[#25D366]/25 text-center focus-visible:outline-2 focus-visible:outline-[#25D366] min-h-[48px]"
+      aria-label="Send WhatsApp message"
+    >
+      <MessageSquare className="w-4 h-4 text-[#128C7E] mb-0.5" />
+      <span class="text-[11px] font-semibold leading-none">WhatsApp</span>
+    </a>
+
+    <!-- 3. Get Quote -->
+    <a
+      href="/contact"
+      class="btn-tactile flex flex-col items-center justify-center py-2 px-1 rounded-lg bg-[var(--amber)] text-[var(--ink)] hover:bg-[var(--amber-hover)] text-center font-semibold focus-visible:outline-2 focus-visible:outline-[var(--amber)] min-h-[48px] shadow-xs"
+      aria-label="Request a project quote"
+    >
+      <Send className="w-4 h-4 text-[var(--ink)] mb-0.5" />
+      <span class="text-[11px] font-semibold leading-none">Get Quote</span>
+    </a>
+  </div>
+</aside>

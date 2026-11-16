@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+let items: CollectionEntry<'work'>[] = [];
+try {
+  items = await getCollection('work', ({ data }) => !data.draft);
+} catch {
+  items = [];
+}
+
+// Hide-when-empty rule: If no items, return 404
+if (!items || items.length === 0) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+---
+
+<BaseLayout
+  title="Our Work & Case Studies - Shayonam Digital"
+  description="Client case studies and digital outcomes engineered by Shayonam Digital."
+>
+  <section class="py-16 md:py-24 bg-[var(--paper)]">
+    <div class="site-container">
+      <h1 class="text-3xl sm:text-4xl font-bold font-display text-[var(--ink)] mb-8">
+        Selected Client Work
+      </h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {items.map((item) => (
+          <article class="p-6 rounded-xl bg-[var(--surface)] border border-[var(--border-light)] space-y-3">
+            <span class="text-xs font-bold text-[var(--amber-text)]">{item.data.client}</span>
+            <h2 class="text-xl font-bold text-[var(--ink)]">{item.data.title}</h2>
+            <p class="text-sm text-[var(--ink-muted)]">{item.data.outcome}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

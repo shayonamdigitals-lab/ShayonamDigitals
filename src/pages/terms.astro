@@ -1,0 +1,77 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { AlertCircle } from 'lucide-react';
+---
+
+<BaseLayout
+  title="Terms of Service - Shayonam Digital"
+  description="Terms of Service for Shayonam Digital website design, development, and digital services."
+>
+  <section class="py-12 md:py-20 bg-[var(--paper)]">
+    <div class="site-container max-w-3xl space-y-8">
+      <div>
+        <h1 class="text-3xl sm:text-4xl font-bold font-display text-[var(--ink)] tracking-tight">
+          Terms of Service
+        </h1>
+        <p class="mt-2 text-xs text-[var(--ink-muted)]">
+          Last updated: November 16, 2026
+        </p>
+      </div>
+
+      <!-- Visible Legal Review Notice -->
+      <div class="p-4 rounded-xl bg-[var(--surface-alt)] border border-[var(--border-light)] flex items-start space-x-3 text-xs text-[var(--ink-muted)]">
+        <AlertCircle className="w-4 h-4 text-[var(--amber-text)] flex-shrink-0 mt-0.5" />
+        <p>
+          <strong class="text-[var(--ink)]">Legal Disclaimer:</strong> These terms are provided as an operational baseline describing agency client engagements. They should be reviewed by legal counsel before signing binding corporate contracts.
+        </p>
+      </div>
+
+      <div class="space-y-6 text-sm text-[var(--ink)] leading-relaxed">
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">1. Scope of Engagement</h2>
+          <p class="text-[var(--ink-muted)]">
+            Shayonam Digital provides custom website design, web application development, website redesign, care plans, and digital consulting services. Each specific project engagement is governed by a mutually agreed proposal, statement of work, or quotation detailing deliverables, timelines, and fees.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">2. Client Materials and Intellectual Property</h2>
+          <p class="text-[var(--ink-muted)]">
+            Clients retain full ownership of all trademarks, brand logos, product graphics, and content supplied to Shayonam Digital for inclusion in the project. The client represents that they have full legal rights to use all materials provided.
+          </p>
+          <p class="text-[var(--ink-muted)]">
+            Upon full settlement of all project invoices, 100% ownership of the custom code, compiled assets, and bespoke design files created specifically for the client transfers entirely to the client.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">3. Estimates, Milestones, and Payments</h2>
+          <p class="text-[var(--ink-muted)]">
+            Project work begins following receipt of the agreed upfront deposit. Milestones and final delivery handovers occur upon settlement of the remaining agreed balance. Quotations remain valid for thirty (30) days from issuance.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">4. Revisions and Scope Adjustments</h2>
+          <p class="text-[var(--ink-muted)]">
+            Standard proposals include structured design review rounds. Substantial structural changes requested after sign-off of initial design wireframes or additional features not listed in the original scope will be quoted as separate work items.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">5. Limitation of Liability</h2>
+          <p class="text-[var(--ink-muted)]">
+            While Shayonam Digital implements industry best practices for security, accessibility, and high performance, we shall not be liable for indirect, incidental, or consequential damages resulting from third-party hosting outages, domain registrar interruptions, or client-side credentials misuse.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold font-display text-[var(--ink)]">6. Jurisdiction</h2>
+          <p class="text-[var(--ink-muted)]">
+            These terms and any client agreements shall be governed by and construed in accordance with the laws of India, and any disputes shall be subject to the exclusive jurisdiction of the competent courts in Bhavnagar, Gujarat, India.
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
